@@ -1,0 +1,36 @@
+#searchForm{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+}
+
+#searchBar{
+    width: 60%;
+    font-size: 25px;
+    background: none;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+#searchBar::placeholder{
+    color: black;
+    opacity: 0.2;
+}
+
+#searchBtn{
+    font-size: 25px;
+    width: 40px;
+    border: 2px solid grey;
+    border-radius: 10px;
+    background: none;
+    cursor:grab;
+}
+
+#mainDisplay{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 20px 50px;
+}

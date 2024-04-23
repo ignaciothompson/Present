@@ -1,0 +1,82 @@
+[
+    {
+      "id": 1,
+      "name": "Glass Cleaner Bundle",
+      "description": "Pack of 3 glass cleaners for a streak-free shine.",
+      "price": 12.99,
+      "newPrice": 9.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 2,
+      "name": "All-Purpose Cleaner Refill Pack",
+      "description": "Bulk refill pack of all-purpose cleaner for a better value.",
+      "price": 19.99,
+      "newPrice": 14.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Disinfecting Wipes Mega Pack",
+      "description": "Extra-large pack of disinfecting wipes for a deep clean.",
+      "price": 14.99,
+      "newPrice": 11.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Toilet Bowl Cleaner Duo",
+      "description": "Two-pack of toilet bowl cleaners for a fresh bathroom.",
+      "price": 7.99,
+      "newPrice": 5.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Carpet Cleaner & Deodorizer",
+      "description": "Deep-cleaning carpet solution with built-in deodorizer.",
+      "price": 12.99,
+      "newPrice": 9.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Oven Cleaner Heavy-Duty Pack",
+      "description": "Extra-strength oven cleaner for tough baked-on messes.",
+      "price": 11.99,
+      "newPrice": 8.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Stainless Steel Cleaner & Polish Combo",
+      "description": "Cleaner and polish set for a pristine stainless steel finish.",
+      "price": 13.99,
+      "newPrice": 10.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Furniture Polish & Wipes Kit",
+      "description": "Polish and pre-moistened wipes for cleaning wood furniture.",
+      "price": 9.99,
+      "newPrice": 7.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Laundry Detergent Value Size",
+      "description": "Jumbo-sized laundry detergent for a better value.",
+      "price": 19.99,
+      "newPrice": 14.99,
+      "image": "/images/detergente.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Drain Cleaner & Unblocker Duo",
+      "description": "Two-pack of drain cleaners for stubborn clogs.",
+      "price": 9.99,
+      "newPrice": 6.99,
+      "image": "/images/detergente.jpg"
+    }
+  ]

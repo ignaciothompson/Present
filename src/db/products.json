@@ -1,0 +1,173 @@
+[
+  {
+    "category": "Glass and Surface Cleaners",
+    "products": [
+      {
+        "id": 1,
+        "name": "Glass Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Streak-free formula for cleaning windows, mirrors, and other glass surfaces.",
+        "price": 4.99
+      },
+      {
+        "id": 2,
+        "name": "All-Purpose Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Versatile cleaner for countertops, floors, and other household surfaces.",
+        "price": 3.49
+      },
+      {
+        "id": 3,
+        "name": "Disinfecting Wipes",
+        "image": "/images/detergente.jpg",
+        "description": "Pre-moistened wipes for sanitizing and disinfecting surfaces.",
+        "price": 5.99,
+        "discountPrice": 4.99
+      },
+      {
+        "id": 13,
+        "name": "Degreaser",
+        "image": "/images/detergente.jpg",
+        "description": "Heavy-duty cleaner for removing grease, oil, and grime.",
+        "price": 5.99
+      }
+    ]
+  },
+  {
+    "category": "Bathroom and Toilet Cleaners",
+    "products": [
+      {
+        "id": 4,
+        "name": "Toilet Bowl Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Powerful formula for removing stains and odors from toilet bowls.",
+        "price": 2.99
+      },
+      {
+        "id": 12,
+        "name": "Bathroom Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Multipurpose cleaner for bathtubs, sinks, and other bathroom surfaces.",
+        "price": 4.49,
+        "discountPrice": 3.99
+      }
+    ]
+  },
+  {
+    "category": "Floor and Carpet Cleaners",
+    "products": [
+      {
+        "id": 5,
+        "name": "Carpet Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Deep-cleaning solution for carpets and rugs.",
+        "price": 7.99,
+        "discountPrice": 6.99
+      },
+      {
+        "id": 11,
+        "name": "Floor Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Concentrated cleaner for all types of hard floors.",
+        "price": 6.49
+      },
+      {
+        "id": 15,
+        "name": "Wood Floor Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Specialized cleaner for hardwood and laminate floors.",
+        "price": 7.49
+      }
+    ]
+  },
+  {
+    "category": "Appliance and Furniture Cleaners",
+    "products": [
+      {
+        "id": 6,
+        "name": "Oven Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Heavy-duty cleaner for removing baked-on grease and grime from ovens.",
+        "price": 6.49,
+        "discountPrice": 5.99
+      },
+      {
+        "id": 7,
+        "name": "Stainless Steel Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Specialized formula for cleaning and polishing stainless steel appliances.",
+        "price": 4.99
+      },
+      {
+        "id": 8,
+        "name": "Furniture Polish",
+        "image": "/images/detergente.jpg",
+        "description": "Nourishing polish for protecting and restoring wood furniture.",
+        "price": 5.99
+      }
+    ]
+  },
+  {
+    "category": "Laundry and Cleaning Accessories",
+    "products": [
+      {
+        "id": 9,
+        "name": "Laundry Detergent",
+        "image": "/images/detergente.jpg",
+        "description": "High-efficiency detergent for washing clothes and linens.",
+        "price": 9.99
+      },
+      {
+        "id": 10,
+        "name": "Drain Cleaner",
+        "image": "/images/detergente.jpg",
+        "description": "Powerful formula for unclogging drains and pipes.",
+        "price": 3.99,
+        "discountPrice": 2.99
+      },
+      {
+        "id": 14,
+        "name": "Bleach",
+        "image": "/images/detergente.jpg",
+        "description": "Powerful disinfectant and whitening agent.",
+        "price": 2.99
+      },
+      {
+        "id": 16,
+        "name": "Microfiber Cloths",
+        "image": "/images/detergente.jpg",
+        "description": "Reusable and highly absorbent cleaning cloths.",
+        "price": 9.99,
+        "discountPrice": 7.99
+      },
+      {
+        "id": 17,
+        "name": "Mop and Bucket Set",
+        "image": "/images/detergente.jpg",
+        "description": "Sturdy mop and bucket for cleaning floors.",
+        "price": 14.99
+      },
+      {
+        "id": 18,
+        "name": "Broom and Dustpan",
+        "image": "/images/detergente.jpg",
+        "description": "Basic cleaning tools for sweeping floors and surfaces.",
+        "price": 7.99
+      },
+      {
+        "id": 19,
+        "name": "Sponges",
+        "image": "/images/detergente.jpg",
+        "description": "Multipurpose sponges for scrubbing and cleaning.",
+        "price": 3.99
+      },
+      {
+        "id": 20,
+        "name": "Cleaning Gloves",
+        "image": "/images/detergente.jpg",
+        "description": "Protective gloves for cleaning tasks.",
+        "price": 4.99
+      }
+    ]
+  }
+]
