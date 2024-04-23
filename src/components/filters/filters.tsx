@@ -13,8 +13,8 @@ const Filters: React.FC<FiltersProps> = ({
   setSelectedCategory,
 }) => {
   return (
-    <div className={styles.categoriesContainer}> {/* Use styles object for className */}
-      <h2 id={styles.categoryTitle}>Categorias</h2> {/* Use styles object for id */}
+    <div className={styles.categoriesContainer}> 
+      <h2 id={styles.categoryTitle}>Categorias</h2> 
       <ul>
         <li key="all" onClick={() => setSelectedCategory('')}>
           All

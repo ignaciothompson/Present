@@ -1,0 +1,59 @@
+.aboutContainer{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.history{
+    width: 40%;
+    margin-left: 50px;
+}
+
+.mision{
+    width: 40%;
+    margin-right: 50px;
+}
+
+.locations{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    p{
+        width: 100%;
+    }
+}
+
+.location{
+    margin-right: 50px;
+}
+
+.location:last-child{
+    margin-right: 0px;
+}
+
+.clientsInfo{
+    width: 60%;
+    margin-top: 50px;
+}
+
+.clients{
+    font-size: 25px;
+}
+
+.clientsNum{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.socialImg{
+    width: 50px;
+    margin-right:25px ;
+}
