@@ -1,43 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import './homepage.css';
-import Discounts from '../../components/discounts/discounts';
-import discountsData from '../../db/discounts.json';
-import data from '../../db/products.json';
+// import Discounts from '../../components/discounts/discounts';
 import Filters from '../../components/filters/filters.tsx';
 import Products from '../../components/products/products.tsx';
-import { Product, CategoryData } from '../../types.ts';
+import apiData from '../../db/API.json'; // Assuming API.json is properly imported
+import './homepage.css'
 
 
 const Homepage: React.FC = () => {
-  const [discounts, setDiscounts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [categoriesData, setCategoriesData] = useState<CategoryData[]>([]);
 
-  useEffect(() => {
-    setDiscounts(discountsData);
-  }, []);
+  interface Product{
+    id: number;
+    version: number;
+    companyId: number;
+    name: string;
+    enabled: boolean;
+    description: string;
+    price: number;
+    code: string;
+    useGenericDiscount: boolean;
+    removed: boolean;
+    index: null;
+    photoPath: string | null;
+    photoLightPath: string | null;
+    promotion: boolean;
+    lists: string[];
+    priceWithDiscount: number;
+  }
+  interface APIProduct {
+    id: number;
+    name: string;
+    version: string;
+    photoPath: string | null;
+    enabled: boolean;
+    order: number;
+    products: Product[];
+  }
 
-  useEffect(() => {
-    setCategoriesData(data.map(item => ({ category: item.category, products: item.products })));
-  }, []);
+    // Group products by category for the filters using category id
+    const categories: APIProduct[] = apiData.map(item => ({
+      id: item.id,
+      category: item.name,
+      products: item.products
+    }));
 
-  useEffect(() => {
-    if (selectedCategory) {
-      const categoryData = categoriesData.find((categoryData) => categoryData.category === selectedCategory);
-      if (categoryData) {
-        setFilteredProducts(categoryData.products);
+    useEffect(() => {
+      const products: Product[] = apiData.flatMap((item: APIProduct) => item.products); // Added type annotation for item
+      setFilteredProducts(products);
+    }, [apiData, setFilteredProducts])
+
+    useEffect(() => {
+      if (selectedCategory !== '') {
+        const categoryData: APIProduct | undefined = apiData.find(item => item.name === selectedCategory ); // Added type annotation for categoryData
+        if (categoryData) {
+          setFilteredProducts(categoryData.products);
+        } else {
+          setFilteredProducts([]);
+        }
       } else {
-        setFilteredProducts([]);
+        const products: Product[] = apiData.flatMap((item: APIProduct) => item.products); // Added type annotation for item
+        setFilteredProducts(products);
       }
-    } else {
-      setFilteredProducts(categoriesData.flatMap((categoryData) => categoryData.products));
-    }
-  }, [selectedCategory, categoriesData]);
-
+    }, [selectedCategory, apiData, setFilteredProducts])  
   return (
     <div>
-      <Discounts products={discounts} />
+      {/* <Discounts products={discounts} /> */}
       <div>
         <form id="searchForm">
           <input id="searchBar" type="text" placeholder="Busqueda" />
@@ -48,7 +76,7 @@ const Homepage: React.FC = () => {
       </div>
       <div id='mainDisplay'>
         <Filters
-          categories={categoriesData.map(({ category }) => category)}
+          categories={categories.map(({ category }) => category)}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />

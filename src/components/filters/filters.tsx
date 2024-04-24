@@ -4,7 +4,7 @@ import styles from './filters.module.css'; // Import CSS module
 interface FiltersProps {
   categories: string[];
   selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
+  setSelectedCategory: (id: string) => void; // Change parameter name to 'id'
 }
 
 const Filters: React.FC<FiltersProps> = ({

@@ -21,6 +21,7 @@ interface ProductsProps {
 }
 
 const Products: React.FC<ProductsProps> = ({ products }) => {
+  // console.log(products);
   const [quantities, setQuantities] = React.useState<number[]>(products.map(() => 1));
 
   const handleAddToCart = (product: Product, quantity: number) => {
