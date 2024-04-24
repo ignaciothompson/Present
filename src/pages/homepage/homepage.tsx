@@ -24,23 +24,28 @@ const Homepage: React.FC = () => {
   const [discounts, setDiscounts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [categoriesData, setCategoriesData] = useState<CategoryData[]>([]);
 
   useEffect(() => {
     setDiscounts(discountsData);
   }, []);
 
   useEffect(() => {
+    setCategoriesData(data.map(item => ({ category: item.category, products: item.products })));
+  }, []);
+
+  useEffect(() => {
     if (selectedCategory) {
-      const category = data.find((item) => item.category === selectedCategory);
-      if (category) {
-        setFilteredProducts(category.products);
+      const categoryData = categoriesData.find((categoryData) => categoryData.category === selectedCategory);
+      if (categoryData) {
+        setFilteredProducts(categoryData.products);
       } else {
         setFilteredProducts([]);
       }
     } else {
-      setFilteredProducts(data.flatMap((item) => item.products));
+      setFilteredProducts(categoriesData.flatMap((categoryData) => categoryData.products));
     }
-  }, [selectedCategory]);
+  }, [selectedCategory, categoriesData]);
 
   return (
     <div>
@@ -55,7 +60,7 @@ const Homepage: React.FC = () => {
       </div>
       <div id='mainDisplay'>
         <Filters
-          categories={data.map(({ category }) => category)}
+          categories={categoriesData.map(({ category }) => category)}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />

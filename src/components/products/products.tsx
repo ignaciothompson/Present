@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './products.module.css';
 
@@ -21,6 +21,8 @@ interface ProductsProps {
 }
 
 const Products: React.FC<ProductsProps> = ({ products }) => {
+  const [quantities, setQuantities] = React.useState<number[]>(products.map(() => 1));
+
   const handleAddToCart = (product: Product, quantity: number) => {
     // Get existing cart items from local storage
     const existingCartItems = localStorage.getItem('cartItems')
@@ -53,11 +55,15 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
     }
   };
 
+  const handleQuantityChange = (index: number, value: number) => {
+    const newQuantities = [...quantities];
+    newQuantities[index] = value;
+    setQuantities(newQuantities);
+  };
+
   return (
     <div className={styles.productsContainer}>
-      {products.map((product) => {
-        const [quantity, setQuantity] = useState(1);
-
+      {products.map((product, index) => {
         return (
           <div className={styles.card} key={product.id}>
             <div className={styles.cardContent}>
@@ -73,14 +79,14 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
                 <Link to={`/product/${product.id}`}>
                   <button className={styles.button}>Mas Info</button>
                 </Link>
-                <button className={styles.button} onClick={() => handleAddToCart(product, quantity)}>
+                <button className={styles.button} onClick={() => handleAddToCart(product, quantities[index])}>
                   Agregar
                 </button>
                 <input
                   type="number"
                   className={styles.quantity}
-                  value={quantity}
-                  onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
+                  value={quantities[index]}
+                  onChange={(e) => handleQuantityChange(index, parseInt(e.target.value, 10))}
                   min="1"
                 />
               </div>
