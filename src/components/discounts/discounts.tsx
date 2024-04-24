@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./discounts.module.css";
+import { Product } from "../../types.ts";
 
-const Discounts = ({ products }) => {
+const Discounts = ({ products }: { products: Product[] }) => {
   const [startIndex, setStartIndex] = useState(0);
 
   const goToPrevSet = () => {
@@ -29,7 +30,7 @@ const Discounts = ({ products }) => {
             <h3 className={styles.discountTitle}>{product.name}</h3>
             <div className={styles.prices}>
               <p className={styles.oldPrice}>{product.price}</p>
-              <p className={styles.newPrice}>{product.newPrice}</p>
+              <p className={styles.newPrice}>{product.discountPrice}</p>
             </div>
           </div>
         ))}

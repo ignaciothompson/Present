@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import productData from '../../db/products.json'; // Import the JSON data
+import { Product } from '../../types';
 
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
-  discountPrice?: number;
-}
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,7 +10,7 @@ const ProductPage: React.FC = () => {
 
   useEffect(() => {
     // Find the product object based on the ID
-    const foundProduct = productData.flatMap((category) => category.products).find((product) => product.id === parseInt(id, 10));
+    const foundProduct = productData.flatMap((category) => category.products).find((product) => product.id === parseInt(id || '0', 10));
 
     setProduct(foundProduct || null);
   }, [id]);

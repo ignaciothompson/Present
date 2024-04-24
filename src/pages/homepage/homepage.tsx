@@ -5,20 +5,8 @@ import discountsData from '../../db/discounts.json';
 import data from '../../db/products.json';
 import Filters from '../../components/filters/filters.tsx';
 import Products from '../../components/products/products.tsx';
+import { Product, CategoryData } from '../../types.ts';
 
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
-  discountPrice?: number;
-}
-
-interface CategoryData {
-  category: string;
-  products: Product[];
-}
 
 const Homepage: React.FC = () => {
   const [discounts, setDiscounts] = useState<Product[]>([]);
