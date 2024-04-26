@@ -37,4 +37,22 @@ interface Product{
     products: Product[];
   }
 
-  export type { Product, CartItem, ProductsProps, Category };
+  interface Order{
+    name: string;
+    street: string;
+    number: number;
+    email: string;
+    takeAway: boolean;
+    apartmentNumber: string;
+    annotation: string;
+    cart: Cart[];
+    paymentMethod: string;
+    firstPurchase: boolean;
+  }
+
+  interface Cart{
+    product: CartItem[];
+    quantity: number;
+  }
+
+  export type { Product, CartItem, ProductsProps, Category, Order, Cart };

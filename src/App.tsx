@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/navbar/navbar';
 import Homepage from './pages/homepage/homepage';
 import About from './pages/about/about';
-import Cart from './pages/cart.tsx/cart';
+import CartPage from './pages/cart.tsx/cart';
 import ProductPage from './pages/productPage/productPage';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path='/product/:id' element={<ProductPage />} />
         <Route path="/sobre-nosotros" element={<About />} />
-        <Route path="/carrito" element={<Cart />} />
+        <Route path="/carrito" element={<CartPage />} />
       </Routes>
     </Router>
   );
