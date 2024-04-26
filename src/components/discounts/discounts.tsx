@@ -23,14 +23,14 @@ const Discounts = ({ products }: { products: Product[] }) => {
             <div className={styles.imgContainer}>
               <img
                 className={styles.discountImg}
-                src={product.image}
+                src={product.photoPath ?? 'default.jpg'}
                 alt={product.name}
               />
             </div>
             <h3 className={styles.discountTitle}>{product.name}</h3>
             <div className={styles.prices}>
               <p className={styles.oldPrice}>{product.price}</p>
-              <p className={styles.newPrice}>{product.discountPrice}</p>
+              <p className={styles.newPrice}>{product.photoPath}</p>
             </div>
           </div>
         ))}
@@ -56,4 +56,3 @@ const Discounts = ({ products }: { products: Product[] }) => {
 };
 
 export default Discounts;
-
