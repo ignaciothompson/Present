@@ -3,72 +3,70 @@ import React, { useState, useEffect } from 'react';
 import Filters from '../../components/filters/filters.tsx';
 import Products from '../../components/products/products.tsx';
 import apiData from '../../db/API.json'; // Assuming API.json is properly imported
+import { Category, Product } from '../../types';
 import './homepage.css'
 
 
 const Homepage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [shownProducts, setShownProducts] = useState<Product[]>([]);
 
-  interface Product{
-    id: number;
-    version: number;
-    companyId: number;
-    name: string;
-    enabled: boolean;
-    description: string;
-    price: number;
-    code: string;
-    useGenericDiscount: boolean;
-    removed: boolean;
-    index: null;
-    photoPath: string | null;
-    photoLightPath: string | null;
-    promotion: boolean;
-    lists: string[];
-    priceWithDiscount: number;
-  }
-  interface APIProduct {
-    id: number;
-    name: string;
-    version: string;
-    photoPath: string | null;
-    enabled: boolean;
-    order: number;
-    products: Product[];
-  }
 
     // Group products by category for the filters using category id
-    const categories: APIProduct[] = apiData.map(item => ({
+    const categories = apiData.map((item: Category) => ({
       id: item.id,
       category: item.name,
       products: item.products
     }));
 
     useEffect(() => {
-      const products: Product[] = apiData.flatMap((item: APIProduct) => item.products); // Added type annotation for item
+      const products: Product[] = apiData.flatMap((item: Category) => item.products); // Added type annotation for item
       setFilteredProducts(products);
-    }, [apiData, setFilteredProducts])
+    }, [ setFilteredProducts])
+
 
     useEffect(() => {
       if (selectedCategory !== '') {
-        const categoryData: APIProduct | undefined = apiData.find(item => item.name === selectedCategory ); // Added type annotation for categoryData
+        const categoryData: Category | undefined = apiData.find((item: Category) => item.name === selectedCategory ); // Added type annotation for categoryData
         if (categoryData) {
           setFilteredProducts(categoryData.products);
         } else {
           setFilteredProducts([]);
         }
       } else {
-        const products: Product[] = apiData.flatMap((item: APIProduct) => item.products); // Added type annotation for item
+        const products: Product[] = apiData.flatMap((item: Category) => item.products); // Added type annotation for item
         setFilteredProducts(products);
       }
-    }, [selectedCategory, apiData, setFilteredProducts])  
+    }, [selectedCategory,  setFilteredProducts]) 
+
+    useEffect(() => {
+      const results = filteredProducts.filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
+      setSearchResults(results);
+    }, [searchTerm, filteredProducts]);
+
+    useEffect(() => {
+      if(searchResults.length > 0){
+        setShownProducts(searchResults);
+      }else{
+        setShownProducts(filteredProducts);
+      }
+    }, [searchResults, filteredProducts]);
+    
   return (
     <div>
       {/* <Discounts products={discounts} /> */}
       <div>
         <form id="searchForm">
-          <input id="searchBar" type="text" placeholder="Busqueda" />
+          <input 
+          id="searchBar" 
+          type="text" 
+          placeholder="Busqueda" 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <button id="searchBtn">
             <img src="/images/search.svg" alt="search" />
           </button>
@@ -80,7 +78,7 @@ const Homepage: React.FC = () => {
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
-        <Products products={filteredProducts} />
+        <Products products={shownProducts} />
       </div>
     </div>
   );
