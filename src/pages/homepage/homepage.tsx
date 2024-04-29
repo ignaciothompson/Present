@@ -22,6 +22,7 @@ const Homepage: React.FC = () => {
       products: item.products
     }));
 
+
     useEffect(() => {
       const products: Product[] = apiData.flatMap((item: Category) => item.products); // Added type annotation for item
       setFilteredProducts(products);
@@ -57,6 +58,9 @@ const Homepage: React.FC = () => {
     
   return (
     <div>
+      <div className='bannerContainer'>
+        <img src='/images/baner.png' />
+      </div>
       {/* <Discounts products={discounts} /> */}
       <div>
         <form id="searchForm">
@@ -74,7 +78,7 @@ const Homepage: React.FC = () => {
       </div>
       <div id='mainDisplay'>
         <Filters
-          categories={categories.map(({ category }) => category)}
+          categories={categories.map(({ category, products }) => ({ category, products }))}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />

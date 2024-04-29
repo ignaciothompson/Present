@@ -2,13 +2,27 @@
     width: 20%;
     height: fit-content;
     border-radius: 25px;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     margin-right: 25px;
 }
 
 #categoryTitle{
-    margin-left: 20px;
     margin-bottom: 10px;
+}
+
+ul{
+    padding-left: 10px;
+}
+
+li {
+    list-style-type: none;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.categoryCount{
+    margin-left: 5px;
+    color: lightgray;
 }
 
 

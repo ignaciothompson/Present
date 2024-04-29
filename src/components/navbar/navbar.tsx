@@ -5,8 +5,7 @@ const Navbar = () => {
   return (
     <div className={styles.navContainer}>
       <div className={styles.imgContainer}>
-        <img src="" id={styles.logoImg} alt="Logo" />
-        <h1>Present</h1>
+        <img src="/images/logo.png" id={styles.logoImg} alt="Logo" />
       </div>
       <div className={styles.btnGroup}>
         <Link to="/" className={styles.navBtn}>

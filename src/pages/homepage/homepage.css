@@ -4,6 +4,7 @@
     width: 80%;
     margin: auto;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 #searchBar{
@@ -33,5 +34,13 @@
 #mainDisplay{
     display: flex;
     flex-wrap: nowrap;
-    margin: 20px 50px;
+    margin: auto;
+    width: 80%;
 }
+
+.bannerContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
