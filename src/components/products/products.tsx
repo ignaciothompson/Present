@@ -2,41 +2,35 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./products.module.css";
 import { Product, CartItem, ProductsProps } from "../../types";
+import ReactPaginate from 'react-paginate';
 
 const Products: React.FC<ProductsProps> = ({ products }) => {
-  // console.log(products);
   const [quantities, setQuantities] = React.useState<number[]>(
     products.map(() => 1)
   );
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const productsPerPage = 16;
 
   const handleAddToCart = (product: Product, quantity: number) => {
-    // Get existing cart items from local storage
     const existingCartItems = localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems") || "[]")
       : [];
 
-    // Check if the product already exists in the cart
     const existingCartItemIndex = existingCartItems.findIndex(
       (item: CartItem) => item.product.id === product.id
     );
 
     if (existingCartItemIndex !== -1) {
-      // If the product exists, update the quantity
       const updatedCartItems = [...existingCartItems];
       updatedCartItems[existingCartItemIndex].quantity += quantity;
-
-      // Save the updated cart items to local storage
       localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     } else {
-      // If the product doesn't exist, add a new cart item
       const newCartItem = {
         product,
         quantity,
       };
 
       const updatedCartItems = [...existingCartItems, newCartItem];
-
-      // Save the updated cart items to local storage
       localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     }
   };
@@ -47,9 +41,17 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
     setQuantities(newQuantities);
   };
 
+  const indexOfLastProduct = (currentPage + 1) * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const handlePageClick = (data: { selected: number }) => {
+    setCurrentPage(data.selected);
+  };
+
   return (
     <div className={styles.productsContainer}>
-      {products.map((product, index) => {
+      {currentProducts.map((product, index) => {
         return (
             <div className={styles.card} key={product.id}>
               <Link
@@ -90,11 +92,26 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
                   onClick={() => handleAddToCart(product, quantities[index])}
                 >
                   Agregar
-                </button>
+              </button>
               </div>
             </div>
         );
       })}
+      <ReactPaginate
+        previousLabel={'<'}
+        nextLabel={'>'}
+        breakLabel={'...'}
+        pageCount={Math.ceil(products.length / productsPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={2}
+        onPageChange={handlePageClick}
+        containerClassName={styles.pagination}
+        pageLinkClassName={styles.pageLink}
+        previousLinkClassName={styles.previousLink}
+        nextLinkClassName={styles.nextLink}
+        breakLinkClassName={styles.breakLink}
+        activeClassName={styles.active}
+      />
     </div>
   );
 };

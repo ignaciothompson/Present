@@ -44,7 +44,7 @@ a{
 
 .regularPrice{
   font-size: 18px;
-  color: #1140da;
+  color: #0a7ba8;
 }
 
 .discountPrice {
@@ -71,10 +71,10 @@ a{
   width: 60%;
   padding: 7px;
   border-radius: 10px;
-  background: linear-gradient(to bottom, #1140da, #1fd3e0);
-  background: #1fd3e0;
+  background: #0a7ba8;
   border: none;
   cursor: pointer;
+  color: white;
 }
 
 .quantity{
@@ -85,4 +85,29 @@ a{
   font-size: 14px;
 }
 
+.pagination{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
 
+.pageLink{
+  cursor: default;
+  padding: 5px;
+}
+
+.active{
+  background-color: #0a7ba8;
+  border:none;
+  padding: 5px;
+}
+
+.previousLink{
+  cursor: default;
+}
+
+.nextLink{
+  cursor: default;
+}
