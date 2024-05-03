@@ -16,58 +16,40 @@ const CartPage: React.FC = () => {
   const [paymentMethods, setPaymentMethods] = useState("");
   const [x, setX] = useState(Boolean);
 
-
+  // Retrieve form data from DOM elements
   const getFormData = () => {
     if(newAddress){
-    setX(true);
-    setName((document.getElementById("name") as HTMLInputElement).value);
-    setStreet((document.getElementById("street") as HTMLInputElement).value);
-    setNumber(parseInt((document.getElementById("phone") as HTMLInputElement).value));
-    setEmail((document.getElementById("email") as HTMLInputElement).value);
-    setTakeAway((document.getElementById("takeAway") as HTMLInputElement).checked);
-    setApartmentNumber((document.getElementById("apartmentNumber") as HTMLInputElement).value);
-    setAnnotation((document.getElementById("annotation") as HTMLInputElement).value);
-    const cash = ((document.getElementById("cash") as HTMLInputElement).checked);
-    const debitCard = (document.getElementById("debitCard") as HTMLInputElement).checked;
-    const creditCard = (document.getElementById("creditCard") as HTMLInputElement).checked;
-  
-    // Collect all checked payment methods
-    const methods = [];
-    if (cash) {
-      methods.push("CASH");
+      setX(true);
+      setName((document.getElementById("name") as HTMLInputElement).value);
+      setStreet((document.getElementById("street") as HTMLInputElement).value);
+      setNumber(parseInt((document.getElementById("phone") as HTMLInputElement).value));
+      setEmail((document.getElementById("email") as HTMLInputElement).value);
+      setTakeAway((document.getElementById("takeAway") as HTMLInputElement).checked);
+      setApartmentNumber((document.getElementById("apartmentNumber") as HTMLInputElement).value);
+      setAnnotation((document.getElementById("annotation") as HTMLInputElement).value);
+    } else {
+      setX(false);
+      console.log(localStorage.getItem("order"));
+      return localStorage.getItem("order");
     }
-    if (debitCard) {
-      methods.push("DEBIT_CARD");
-    }
-    if (creditCard) {
-      methods.push("CREDIT_CARD");
-    }
-    if (!cash && !debitCard && !creditCard) {
-      methods.push("UNDEFINED");
-    }
-    setPaymentMethods(methods.join(", "));
-    return methods.join(", "); // Return the payment methods string
-  }else{
-    setX(false);
-    console.log(localStorage.getItem("order"));
-    return localStorage.getItem("order");
-  }
   };
 
+  // Load cart items from local storage on component mount
   useEffect(() => {
-    // Retrieve cart items from local storage
     const storedCartItems = localStorage.getItem("cartItems");
     if (storedCartItems) {
       setCartItems(JSON.parse(storedCartItems));
     }
   }, []);
 
+  // Remove an item from the cart
   const handleRemoveFromCart = (item: CartItem) => {
     const newCartItems = cartItems.filter((cartItem) => cartItem !== item);
     setCartItems(newCartItems);
     localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
+  // Update quantity of a cart item
   const handlePlus = (item: CartItem, num: string) => {
     const newQuantity = parseInt(num);
     const updatedItem = { ...item, quantity: newQuantity };
@@ -78,42 +60,47 @@ const CartPage: React.FC = () => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
+  // Handle address change
   const handleChangeAddress = (event: React.FormEvent) => {
     event.preventDefault();
     setNewAddress(true);
-    console.log("Cambiando direccion...");
   };
 
+  // Save form data and update address
   const handleSaveData = (event: React.FormEvent) => {
     event.preventDefault();
     getFormData();
-    handleAddress(street, apartmentNumber);
-    setNewAddress(false);
+    setTimeout(() => {
+      handleAddress();
+    }, 0);
     console.log("Guardando datos...");
   };
 
-  const handleAddress = useCallback((street: string, apartmentNumber: string) => {
+  // Update current address based on form input or stored order
+  const handleAddress = useCallback(() => {
     const order = JSON.parse(localStorage.getItem("order") || '{}');
     if (!newAddress) {
-      const address = [order.street, order.apartmentNumber];
+      const address = [order.street, order.apartmentNumber, order.corner, order.number];
       setCurrentAddress(address.join(", "));
     } else {
       if(street && apartmentNumber != ""){
-        const address = [street, apartmentNumber];
+        const address = [street, apartmentNumber, number];
         setCurrentAddress(address.join(", "));
       }else{
-        const address = [order.street, order.apartmentNumber];
+        const address = [order.street, order.apartmentNumber, order.number];
         setCurrentAddress(address.join(", "));
       }
     }
-  }, [newAddress, street, apartmentNumber]); // Add dependencies here
+  }, [newAddress, street, apartmentNumber, number]); // Add dependencies here
 
+  // Set initial delivery option and address
   useEffect(() => {
     const order = JSON.parse(localStorage.getItem("order") || '{}');
     setTakeAway(order.takeAway);
-    handleAddress(order.street, order.apartmentNumber);
-  }, [handleAddress]); // Added dependency array to ensure this effect runs only once on component mount
+    handleAddress();
+  }, [handleAddress]);
 
+  // Toggle delivery option based on user selection
   const handleShipping = () => {
     const shippingElement = document.getElementById("shipping") as HTMLInputElement;
     if (shippingElement) {
@@ -122,6 +109,41 @@ const CartPage: React.FC = () => {
     }
   }
 
+  // Collect and set payment methods based on user selection
+  const handlePayment = () => {
+    const cash = ((document.getElementById("cash") as HTMLInputElement).checked);
+    const debitCard = (document.getElementById("debitCard") as HTMLInputElement).checked;
+    const creditCard = (document.getElementById("creditCard") as HTMLInputElement).checked;
+  
+    const methods = [];
+    if (cash) methods.push("CASH");
+    if (debitCard) methods.push("DEBIT_CARD");
+    if (creditCard) methods.push("CREDIT_CARD");
+    if (!cash && !debitCard && !creditCard) methods.push("UNDEFINED");
+    
+    setPaymentMethods(methods.join(", "));
+    return methods.join(", ");
+  }
+
+  const handleError = () => {
+    console.log(x);
+    if (x) {
+      if (name === "" || street === "" || number === 0 || apartmentNumber === "") {
+        console.log("Error en la nueva direccion");
+        return false;
+      }
+    } else {
+      const order = JSON.parse(localStorage.getItem("order") || '{}');
+      if (order.name === "" || order.street === "" || order.number === 0 || order.apartmentNumber === "") {
+        console.log("Error con preguardado");
+        return false;
+      }
+    }
+    console.log("Todo bien");
+    return true;
+  }
+
+  // Handle form submission for order
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if(x){
@@ -141,13 +163,18 @@ const CartPage: React.FC = () => {
         paymentMethod: paymentMethods,
         firstPurchase: true,
       };
-      localStorage.setItem("order", JSON.stringify(order));
-      console.log(order, "se cambio la direccion");
+      if(handleError()){
+        localStorage.setItem("order", JSON.stringify(order));
+        console.log(order, "se cambio la direccion");
+      }
     } else {
       const order = JSON.parse(localStorage.getItem("order") || '{}');
+      order.paymentMethod = paymentMethods;
       order.takeAway = !(document.getElementById("shipping") as HTMLInputElement).checked;
-      localStorage.setItem("order", JSON.stringify(order));
-      console.log(order, "no se cambio la direccion");
+      if(handleError()){
+        localStorage.setItem("order", JSON.stringify(order));
+        console.log(order, "no se cambio la direccion");
+      }
     }
   };
 
@@ -181,7 +208,7 @@ const CartPage: React.FC = () => {
                       onClick={() => handleRemoveFromCart(item)}
                       className={styles.removeButton}
                     >
-                      Remove
+                      Eliminar
                     </button>
                   </div>
                 </div>
@@ -191,32 +218,47 @@ const CartPage: React.FC = () => {
         )}
       </div>
       <div className={styles.cartTotal}>
-        <p>Total: ${cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0)}</p>
+        <p className={styles.totalDisplay}>Total: ${cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0)}</p>
         <input type="radio" name="deliveryOption" id="shipping" defaultChecked={!takeAway} onChange={handleShipping} />
         <label htmlFor="shipping">Envío a domicilio</label>
         <input type="radio" name="deliveryOption" id="takeAway" defaultChecked={takeAway} onChange={handleShipping} />
         <label htmlFor="takeAway">Retira en local</label>
         {!takeAway ? (
           <>
-            <p>Direccion actual: {currentAddress}</p>
-            <button onClick={handleChangeAddress}>
+            <p className={styles.addressDisplay}>Direccion actual: {currentAddress}</p>
+            <button onClick={handleChangeAddress} className={styles.submitButton}>
               Cambiar dirección
             </button>
           </>
         ) : (
-          <p>Dirección del local: Cooper 2109</p>
+          <p className={styles.addressDisplay}>Dirección del local: Cooper 2109</p>
         )}
-        
+        <div className={styles.paymentMethodSection}>
+          <label className={styles.paymentMethodLabel}>Forma de pago</label>
+          <div className={styles.paymentOption}>
+            <input type="checkbox" id="cash" value="Efectivo" className={styles.checkbox} onChange={handlePayment}/>
+            Efectivo
+          </div>
+          <div className={styles.paymentOption}>
+            <input type="checkbox" id="debitCard" value="Tarjeta Debito" className={styles.checkbox} onChange={handlePayment}/>
+            Tarjeta Debito
+          </div>
+          <div className={styles.paymentOption}>
+            <input type="checkbox" id="creditCard" value="Tarjeta Credito" className={styles.checkbox} onChange={handlePayment}/>
+            Tarjeta Credito
+          </div>
+        </div>
         <button 
           type="submit"
           onClick={handleSubmit}
+          className={styles.submitButton}
         >
           Hacer pedido
         </button>
       </div>
       <div className={styles.cartForm}>
         {newAddress ? (
-          <form onSubmit={handleSaveData}>
+          <form onSubmit={handleSaveData} className={styles.personalInfoForm}>
             <label>Datos Personales</label>
             <div>
               <input type="text" id="name" placeholder="Nombre y Apellido" />
@@ -226,27 +268,23 @@ const CartPage: React.FC = () => {
             <label>Direccion</label>
             <div>
               <input type="text" id="street" placeholder="Direccion" />
-              <input type="text" id="apartmentNumber" placeholder="Apto/Casa" />
-              <input type="text" id="corner" placeholder="Esquina" />
-            </div>
-            <label>Forma de pago</label>
-            <div>
-              <input type="checkbox" id="cash" value="Efectivo" />
-              Efectivo
-              <input type="checkbox" id="debitCard" value="Tarjeta Debito" />
-              Tarjeta Debito
-              <input type="checkbox" id="creditCard" value="Tarjeta Credito" />
-              Tarjeta Credito
+              <input type="text" id="apartmentNumber" placeholder="Apto/Casa" className={styles.aptNumber} />
+              <input type="text" id="corner" placeholder="Esquina" className={styles.corner} />
             </div>
             <div>
-              <input type="text-area" id="annotation" />
+              <input type="text-area" id="annotation" className={styles.annotation} />
             </div>
-            <button type="submit">Guardar</button>
+            <button type="submit" className={styles.submitButton}>Guardar</button>
           </form>
         ) : (
-          <div onClick={handleChangeAddress}>
+          <div 
+          onClick={handleChangeAddress}
+          className={styles.dropdownCover}
+          >
             <p>Cambiar la dirección</p>
+            <div className={styles.dropdownArrow}>
             <img src="/images/chevron-down.svg" alt="dropdown arrow" />
+            </div>
           </div>
         )}
       </div>

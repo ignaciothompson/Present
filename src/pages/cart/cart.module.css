@@ -1,40 +1,46 @@
+/* Main container for the cart page */
 .cartContainer{
-    width: 80%;
-    margin: 0 auto;
-    /* background-color: #f5f5f5; */
+    width: 70%;
+    height: auto;
+    margin: 0 auto 50px auto;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
 }
 
+/* Container for the items in the cart */
 .cartItems{
     width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: start;
-    background-color: aqua;
 }
 
+/* Styling for the total cost section */
 .cartTotal{
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 25%;
     padding: 10px;
     border: 1px solid lightgray;
     border-radius: 10px;
 }
 
+/* Form container for new address or other inputs */
 .cartForm{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: blueviolet;
+    /* height: 500px; */
 }
 
+/* Individual cart item styling */
 .cartItem{
     width: 100%;
-    /* background-color: brown; */
     border: 1px solid lightgray;
     border-radius: 10px;
     display: flex;
@@ -43,21 +49,25 @@
     padding: 10px;
 }
 
+/* Image styling within the cart item */
 .cartImage{
     width: 70px;
     height: 70px;
     border-radius: 10px;
 }
 
+/* Container for the image to ensure proper spacing */
 .imageContainer{
     width: fit-content;
     margin-right: 25px;
 }
 
+/* Container for text details of the cart item */
 .textContainer{
     width: 80%;
 }
 
+/* Styling for the information section of each cart item */
 .itemInfo{
     width: 100%;
     display: flex;
@@ -74,22 +84,152 @@
     }
 }
 
+/* Styling for the item name */
 .itemName{
     margin:0px;
 }
 
+/* Input for quantity adjustment */
 .quantityInput{
     width: 40px;
     padding: 5px;
     font-size: 16px;
 }
 
+/* Button to remove an item from the cart */
 .removeButton{
     font-size: 16px;
     background-color: rgb(211, 10, 10);
-    color: rgb(255, 255, 255);
+    color: white;
     border: none;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+}
+
+/* Dropdown cover for changing address */
+.dropdownCover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p{
+        margin: 0;
+        padding: 0;
+        margin-right: 10px;
+    }
+}
+
+/* Arrow icon in the dropdown */
+.dropdownArrow{
+    display: flex;
+    align-items: center;
+
+    img{
+        width: 32px;
+        height: 32px;
+        font-weight: 300;
+    }
+}
+
+/* Form styling for address and payment details */
+.personalInfoForm{
+    margin-top: 25px;
+    width: 70%;
+    /* height: 500px; */
+
+    label{
+        font-size: 18px;
+    }
+
+    input{
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid lightgray;
+        margin: 10px 20px 10px 0px;
+        width: calc(30% - 20px);
+        font-size: 16px;
+    }
+
+    .aptNumber{
+        width: 15%;
+    }
+
+    .corner{
+        width: 20%;
+    }
+
+    .annotation{
+        margin-top: 10px;
+        width: 80%;
+        height: 50px;
+        margin: auto;
+        margin: 10px 0;
+    }
+}
+
+.checkbox{
+    margin-top: 10px;
+    margin: 5px;
+    margin-left: 10px;
+    width: fit-content;
+}
+
+/* Styling for the submit button */
+.submitButton{
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 1px solid lightgray;
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+/* Hover effect for the submit button */
+.submitButton:hover {
+    background-color: rgb(99, 99, 99);
+    color: white;
+}
+
+/* Styling for the total display */
+.totalDisplay {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Styling for the address display */
+.addressDisplay {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Styling for the payment method section */
+.paymentMethodSection {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+/* Label styling within the payment method section */
+.paymentMethodLabel {
+    font-size: 16px;
+    font-weight: bold;
+    display: block; /* Makes it take the full width */
+    margin-bottom: 5px;
+}
+
+/* Styling for individual payment method options */
+.paymentOption {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for input within the payment options */
+.paymentOption input {
+    margin-right: 10px;
 }

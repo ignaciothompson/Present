@@ -19,13 +19,13 @@ const Filters: React.FC<FiltersProps> = ({
   setSelectedCategory,
 }) => {
 
-  console.log(categories)
+  // console.log(categories)
   return (
     <div className={styles.categoriesContainer}> 
       <h2 id={styles.categoryTitle}>Categorias</h2> 
       <ul>
         <li key="all" onClick={() => setSelectedCategory('')}>
-          All
+          Todos
         </li>
         {categories.map((category) => (
           <li
