@@ -182,7 +182,7 @@ const CartPage: React.FC = () => {
     <div className={styles.cartContainer}>
       <div className={styles.cartItems}>
         {cartItems.length === 0 ? (
-          <p>Your cart is empty.</p>
+          <p>Tu carrito esta vacio</p>
         ) : (
           <div>
             {cartItems.map((item, index) => (
@@ -223,7 +223,7 @@ const CartPage: React.FC = () => {
         )}
       </div>
       <div className={styles.cartTotal}>
-        <p className={styles.totalDisplay}>Total: ${cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0)}</p>
+        <p className={styles.totalDisplay}>Total: ${Math.round(cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0))}</p>
         <input type="radio" name="deliveryOption" id="shipping" defaultChecked={!takeAway} onChange={handleShipping} />
         <label htmlFor="shipping">Envío a domicilio</label>
         <input type="radio" name="deliveryOption" id="takeAway" defaultChecked={takeAway} onChange={handleShipping} />

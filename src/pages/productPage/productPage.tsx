@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import styles from './product.module.css';
 import { Product, CartItem } from '../../types';
  
@@ -8,6 +8,7 @@ const ProductPage: React.FC = () => {
   const location = useLocation();
   const [product, setProduct] = useState<Product | null>(null);
   const [quantity, setQuantity] = React.useState<number>(1);
+  const [showAlert, setShowAlert] = React.useState(Boolean);
 
   useEffect(() => {
       const productData = location.state?.product;
@@ -70,7 +71,11 @@ const ProductPage: React.FC = () => {
           {/* {product.priceWithDiscount && <p>Discount Price: ${product.priceWithDiscount}</p>} */}
           <button 
             className={styles.button} 
-            onClick={() => handleAddToCart(product, quantity)}>
+            onClick={() => {
+              handleAddToCart(product, quantity);
+              setShowAlert(true);
+            }}
+            >
               Agregar
           </button>
           <input
@@ -80,6 +85,17 @@ const ProductPage: React.FC = () => {
             onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
             min="1"
           />
+          {showAlert && (
+            <div className={styles.alertProduct + " alert-primary"}>
+              <p>Agregaste el producto al carrito</p>
+              <span className={"open"}>
+                <Link to="/carrito"><img src="/images/open.svg" alt="Ver carrito" /></Link>
+              </span>
+              <span className="close" onClick={() => setShowAlert(false)}>
+                <img src="/images/close.svg" alt="Cerrar" />
+              </span>
+            </div>
+            )}
         </div>
       </>
     ) : (

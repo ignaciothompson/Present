@@ -7,16 +7,17 @@
   justify-content: start;
 }
 
-.card{
+.card {
+  position: relative; /* Set position relative for positioning children absolutely within it */
   width: calc(25% - 15px);
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* border: 1px dashed black; */
+  flex-direction: column; /* Ensures content is organized vertically */
+  align-items: center; /* Aligns children (like buttons and images) in the center */
   border-radius: 5px;
   margin-left: 15px;
   margin-bottom: 20px;
   cursor: default;
+  overflow: hidden; /* Ensures no overflow content is visible outside the borders */
 }
 
 a{
@@ -100,9 +101,10 @@ a{
 }
 
 .pageLink{
-  cursor: default;
+  cursor: pointer;
   padding: 5px;
 }
+
 
 .active{
   background-color: var(--secondary-color);
@@ -117,3 +119,4 @@ a{
 .nextLink{
   cursor: default;
 }
+

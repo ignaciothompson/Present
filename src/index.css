@@ -19,3 +19,86 @@
 }
 
 
+.alert {
+  min-height: fit-content;
+  width: 560px;
+  max-width: 90%;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 30;
+  left: 0;
+  z-index: 10;
+}
+
+.alertProduct {
+  min-height: fit-content;
+  width: 300px;
+  max-width: 90%;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.alert, .alertProduct {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.alert.fade-out, .alertProduct.fade-out {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+
+.alert img, .alertProduct img {
+  width: 16px;
+  height: 16px;
+}
+
+.alert-primary {
+  background: var(--primary-color);
+}
+.alert p, .alertProduct p {
+  color: #fff;
+  font-family: Verdana;
+  margin: 0;
+  /* margin-left: 10px; */
+  font-size: 14px;
+}
+
+.open {
+  margin-left: auto;
+  margin-right: 5px;
+}
+.close, .open {
+  color: #fff;
+  transition: transform 0.5s;
+  font-size: 18px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.close:hover, .open:hover {
+  transform: scale(1.3);
+}
+
