@@ -1,0 +1,95 @@
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+    padding: 20px 100px;
+    box-shadow: 0 4px 6px -6px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid #333333da;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+
+.locations, .contact, .socialMedia {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.locations {
+    flex-wrap: wrap;
+}
+
+.locations p {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.location a{
+    text-decoration: underline;
+    color: #fff;
+}
+
+.location {
+    margin-top: 0px;
+    width: calc(50%-50px);
+    margin-right: 50px;
+}
+
+.location:last-child{
+    margin-right: 0px;
+}
+
+.wpLink{
+    text-decoration: underline;
+    color: #fff;
+}
+
+.socialMedia{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.socialMedia p{
+    width: 100%;
+}
+
+.socialMedia img {
+    width: 32px;
+    margin-right: 10px;
+}
+
+.socialMedia a {
+    margin-right: 10px;
+}
+
+.socialMedia a:last-child {
+    margin-right: 0;
+}
+
+.contactInfo {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .locations, .contact, .socialMedia {
+        width: 100%;
+    }
+}
+
+.copyright{
+    width: 100%;
+    margin-top: 0px;
+    text-align: center;
+}

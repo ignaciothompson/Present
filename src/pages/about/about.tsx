@@ -15,36 +15,8 @@ const About = () => {
           <p>Nuestra misión en Present es ser líderes en la venta y distribución de productos dedicados a la higiene, limpieza y desinfección, tanto de fabricación propia como de terceros. Nos dedicamos plenamente a satisfacer las necesidades de nuestros clientes, brindándoles apoyo constante para su crecimiento y eficiencia en el servicio a los consumidores. Además, asumimos un compromiso firme con la comunidad y la preservación del medio ambiente en todas nuestras operaciones. Con una presencia destacada en el 80% del mercado de lavaderos domésticos e industriales, nos esforzamos por ofrecer soluciones que marquen la diferencia en la calidad y sostenibilidad de los procesos de limpieza.</p>
         </div>
       </div>
-      <div className={styles.container}>
-        <div className={styles.locations}>
-          <p>Nos pueden encontrar en nuestros dos locales:</p>
-          <div className={styles.location}>
-            <p>Montevideo</p>
-            <a 
-            href='https://maps.app.goo.gl/bSLDgvJf2osUm34Z8' 
-            target="_blank" 
-            rel="noopener noreferrer">
-              Cooper 2109
-            </a>
-          </div>
-          <div className={styles.location}>
-            <p>Maldonado</p>
-            <a 
-            href='https://maps.app.goo.gl/AiUAe7HQvGwQvXye7' 
-            target="_blank" 
-            rel="noopener noreferrer">
-              Román Bergalli 1037
-            </a>
-          </div>
-        </div>
-        <div className={styles.clientsInfo}>
-          <p className={styles.clients}>Tenemos la confianza de mas de <span className={styles.clientsNum}>2000</span> clientes</p>
-        </div>
-      </div>
-      <div className={styles.socials}>
-        <img src='/images/facebook.svg' alt='facebook' className={styles.socialImg}></img>
-        <img src='/images/instagram.svg' alt='instagram' className={styles.socialImg}></img>
-        <img src='/images/whatsapp.svg' alt='whatsapp' className={styles.socialImg}></img>
+      <div className={styles.clientsInfo}>
+        <p className={styles.clients}>Tenemos la confianza de mas de <span className={styles.clientsNum}>2000</span> clientes</p>
       </div>
     </div>
   )

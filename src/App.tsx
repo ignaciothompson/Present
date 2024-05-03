@@ -6,6 +6,7 @@ import Homepage from './pages/homepage/homepage';
 import About from './pages/about/about';
 import CartPage from './pages/cart/cart';
 import ProductPage from './pages/productPage/productPage';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         <Route path="/sobre-nosotros" element={<About />} />
         <Route path="/carrito" element={<CartPage />} />
       </Routes>
+      <div>
+        <Footer />
+      </div>
     </Router>
   );
 }

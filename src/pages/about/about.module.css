@@ -18,27 +18,6 @@
     margin-right: 50px;
 }
 
-.locations{
-    width: 40%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-
-    p{
-        width: 100%;
-    }
-}
-
-.location{
-    margin-right: 50px;
-}
-
-.location:last-child{
-    margin-right: 0px;
-}
-
 .clientsInfo{
     width: 60%;
     margin-top: 50px;

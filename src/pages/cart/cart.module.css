@@ -238,3 +238,7 @@
 .paymentOption input {
     margin-right: 10px;
 }
+
+.paymentText{
+    font-size: 14px;
+}

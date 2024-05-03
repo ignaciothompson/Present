@@ -253,9 +253,12 @@ const CartPage: React.FC = () => {
             Tarjeta Credito
           </div>
         </div>
+        <p className={styles.paymentText}>El pedido se cobrara en el momento de la entrega</p>
         <button 
           type="submit"
-          onClick={handleSubmit}
+          onClick={() => {
+            handleSubmit;
+          }}
           className={styles.submitButton}
         >
           Hacer pedido
