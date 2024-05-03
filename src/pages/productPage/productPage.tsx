@@ -53,14 +53,21 @@ const ProductPage: React.FC = () => {
   };
 
   return (
-    <div>
-      {product ? (
-        <>
-          <img src={product.photoPath ?? ''} alt={product.name} />
+    <div className={styles.productContainer}>
+    {product ? (
+      <>
+        <div className={styles.imageContainer}>
+        <img
+          // src={product.photoPath ?? "/images/default.jpg"} uncomment when the api is ready
+          src="/images/detergente.jpg"
+          alt={product.name}
+        />
+        </div>
+        <div className={styles.infoContainer}>
           <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>Price: ${product.price}</p>
-          {product.priceWithDiscount && <p>Discount Price: ${product.priceWithDiscount}</p>}
+          <p className={styles.description}>{product.description}</p>
+          <p className={styles.price}>Price: ${product.price}</p>
+          {/* {product.priceWithDiscount && <p>Discount Price: ${product.priceWithDiscount}</p>} */}
           <button 
             className={styles.button} 
             onClick={() => handleAddToCart(product, quantity)}>
@@ -73,11 +80,12 @@ const ProductPage: React.FC = () => {
             onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
             min="1"
           />
-        </>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+        </div>
+      </>
+    ) : (
+      <p>Loading...</p>
+    )}
+  </div>
   );
 };
 

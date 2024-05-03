@@ -25,7 +25,7 @@ const Filters: React.FC<FiltersProps> = ({
       <h2 id={styles.categoryTitle}>Categorias</h2> 
       <ul>
         <li key="all" onClick={() => setSelectedCategory('')}>
-          Todos
+          TODOS LOS PRODUCTOS
         </li>
         {categories.map((category) => (
           <li

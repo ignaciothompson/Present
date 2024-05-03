@@ -188,7 +188,12 @@ const CartPage: React.FC = () => {
             {cartItems.map((item, index) => (
               <div key={index} className={styles.cartItem}>
                 <div className={styles.imageContainer}>
-                  <img src='/images/detergente.jpg' alt={item.product.name}  className={styles.cartImage}/>
+                  <img 
+                    src='/images/detergente.jpg' 
+                    alt={item.product.name} 
+                    // src={product.photoPath ?? "/images/default.jpg"} uncomment when the api is ready
+                    className={styles.cartImage}
+                   />
                 </div>
                 <div className={styles.textContainer}>
                   <h3 className={styles.itemName}>{item.product.name}</h3>

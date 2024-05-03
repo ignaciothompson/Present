@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 #searchForm{
     display: flex;
     flex-wrap: nowrap;

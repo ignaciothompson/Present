@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .productsContainer {
   width: calc(80% - 25px);
   display: flex;
@@ -44,7 +46,7 @@ a{
 
 .regularPrice{
   font-size: 18px;
-  color: #0a7ba8;
+  color: var(--primary-color);
 }
 
 .discountPrice {
@@ -71,10 +73,14 @@ a{
   width: 60%;
   padding: 7px;
   border-radius: 10px;
-  background: #0a7ba8;
+  background: var(--secondary-color);
   border: none;
   cursor: pointer;
   color: white;
+}
+
+.button:hover{
+  background: var(--secondary-color-hover);
 }
 
 .quantity{
@@ -99,7 +105,7 @@ a{
 }
 
 .active{
-  background-color: #0a7ba8;
+  background-color: var(--secondary-color);
   border:none;
   padding: 5px;
 }

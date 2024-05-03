@@ -1,16 +1,67 @@
+@import '../../index.css';
+
+.productContainer {
+  width: 60%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items:center; /* Aligns items at the start of the container */
+  /* background-color: var(--background-color); */
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.imageContainer {
+  flex: 1; /* Takes up 1 portion of the flex container */
+  text-align: center; /* Centers the image */
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 10px;
+  img{
+    border-radius: 10px;
+  }
+}
+
+.infoContainer {
+  flex: 2; /* Takes up 2 portions of the flex container */
+  padding-left: 20px; /* Adds space between the image and the info */
+  margin-left: 20px;
+}
+
+.description {
+  white-space: normal; /* Ensures text wraps */
+  width: 80%;
+}
+
+.price{
+  font-size: 20px;
+}
+
 .buttons {
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: 10px; 
     padding-bottom: 10px;
-  }
+}
   
-  .button {
-    padding: 7px;
-    border-radius: 10px;
-  }
-  
-  .quantity{
-    width: 50px;
-  }
+.button {
+  padding: 10px 40px;
+  border-radius: 10px;
+  margin-right: 20px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover{
+  background-color: var(--secondary-color-hover);
+}
+
+.quantity{
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

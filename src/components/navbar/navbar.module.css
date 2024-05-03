@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .navContainer{
     display: flex;
     flex-wrap: nowrap;
@@ -6,7 +8,7 @@
     padding: 0px 100px;
     box-shadow: 0 4px 6px -6px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid #333333da;
-    background-color: #0a7ba8;
+    background-color: var(--primary-color);
 }
 
 .imgContainer{

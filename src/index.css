@@ -10,6 +10,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #495fad;
+  --secondary-color: #7091e6;
+  --secondary-color-hover: #3963ce;
+  --background-color: #e2e2e9;
+  --red-color: #c50900;
 }
 
 

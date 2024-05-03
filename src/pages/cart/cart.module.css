@@ -1,10 +1,12 @@
+@import '../../index.css';
+
 /* Main container for the cart page */
 .cartContainer{
     width: 70%;
     height: auto;
     margin: 0 auto 50px auto;
-    background-color: #f5f5f5;
-    padding: 10px;
+    /* background-color: var(--background-color); */
+    padding: 25px;
     border-radius: 10px;
     margin-top: 50px;
     display: flex;
@@ -99,7 +101,7 @@
 /* Button to remove an item from the cart */
 .removeButton{
     font-size: 16px;
-    background-color: rgb(211, 10, 10);
+    background-color: var(--red-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -177,17 +179,20 @@
 
 /* Styling for the submit button */
 .submitButton{
-    background-color: lightgray;
+    background-color: var(--secondary-color);
     border-radius: 5px;
     padding: 10px 20px;
-    border: 1px solid lightgray;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid var(--secondary-color);
     width: 300px;
-    margin-bottom: 15px;
+    margin: 0px auto 15px auto;
 }
 
 /* Hover effect for the submit button */
 .submitButton:hover {
-    background-color: rgb(99, 99, 99);
+    background-color: var(--secondary-color-hover);
     color: white;
 }
 
