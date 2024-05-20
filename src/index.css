@@ -120,6 +120,7 @@
 
 .goBackBtn{
   width: 100px;
+  margin-bottom: 10px;
   background-color: var(--secondary-color);
   color: white;
   padding: 10px;

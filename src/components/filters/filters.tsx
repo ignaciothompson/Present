@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './filters.module.css'; // Import CSS module
-import { Product } from '../../types';
+import React from "react";
+import styles from "./filters.module.css"; // Import CSS module
+import { Product } from "../../types";
 
 interface Category {
   category: string;
@@ -18,13 +18,19 @@ const Filters: React.FC<FiltersProps> = ({
   selectedCategory,
   setSelectedCategory,
 }) => {
-
   // console.log(categories)
   return (
-    <div className={styles.categoriesContainer}> 
-      <h2 id={styles.categoryTitle}>Categorias</h2> 
+    <div className={styles.categoriesContainer}>
+      <h2 id={styles.categoryTitle}>Categorias</h2>
       <ul>
-        <li key="all" onClick={() => setSelectedCategory('')}>
+        <li
+          key="all"
+          onClick={() => setSelectedCategory("")}
+          style={{
+            fontFamily:
+              selectedCategory === "" ? "Quicksand-Bold" : "Quicksand",
+          }}
+        >
           TODOS LOS PRODUCTOS
         </li>
         {categories.map((category) => (
@@ -32,10 +38,16 @@ const Filters: React.FC<FiltersProps> = ({
             key={category.category}
             onClick={() => setSelectedCategory(category.category)}
             style={{
-              fontWeight: selectedCategory === category.category ? 'bold' : 'normal',
+              fontFamily:
+                selectedCategory === category.category
+                  ? "Quicksand-Bold"
+                  : "Quicksand",
             }}
           >
-            {category.category}<span className={styles.categoryCount}>({category.products.length})</span>
+            {category.category}
+            <span className={styles.categoryCount}>
+              ({category.products.length})
+            </span>
           </li>
         ))}
       </ul>

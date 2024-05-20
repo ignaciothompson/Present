@@ -10,7 +10,18 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
     products.map(() => 1)
   );
   const [currentPage, setCurrentPage] = React.useState(0);
-  const productsPerPage = 16;
+  // const productsPerPage = 16;
+
+  const [productsPerPage, setProductsPerPage] = React.useState(window.innerWidth >= 768 ? 16 : 8);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setProductsPerPage(window.innerWidth >= 768 ? 16 : 8);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleAddToCart = (product: Product, quantity: number) => {
     const existingCartItems = localStorage.getItem("cartItems")
@@ -80,12 +91,14 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
                   />
                 </div>
                 <div className={styles.productInfo}>
-                  <h3 className={styles.productTitle}>{product.name}</h3>
-                  {/* <p className={product.discountPrice ? styles.discountPrice : styles.regularPrice}> */}
+                  <h3 className={styles.productTitle}>
+                    {product.name.length >= 30
+                      ? product.name.substring(0, product.name.lastIndexOf(' ')).trim() + product.name.substring(product.name.lastIndexOf(' ') + 1)
+                      : product.name}
+                  </h3>
                   <p className={styles.regularPrice}>
                     ${Math.round(product.price)}
                   </p>
-                  {/* {product.discountPrice && <p className={styles.discount}>Descuento: ${product.discountPrice}</p>} */}
                 </div>
               </div>
             </Link>

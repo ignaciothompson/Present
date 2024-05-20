@@ -50,3 +50,38 @@
 .navBtn:last-child{
     margin-right: 0px;
 }
+
+.menuButton{
+    width: 46px;
+    height: 46px;
+    color: white;
+    font-size: 24px;
+    background: none;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+@media (max-width: 480px){
+    .navContainer{
+        padding: 0px 20px;
+    }
+
+    .smallBtnGroup{
+        display: flex;
+        flex-wrap: wrap;
+        flex-wrap: wrap;
+        position:absolute;
+        width: 200px;
+        top: 75px;
+        left: 180px;
+        background-color: var(--primary-color);
+        border-radius: 10px;
+
+        a{
+            width: 100%;
+            margin: auto;
+        }
+    }
+}
+

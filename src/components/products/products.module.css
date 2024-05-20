@@ -48,6 +48,7 @@ a{
 .productTitle{
   font-size: 16px;
   font-weight: 600;
+  word-wrap: break-word;
 }
 
 .regularPrice{
@@ -123,5 +124,27 @@ a{
 
 .nextLink{
   cursor: default;
+}
+
+@media screen and (max-width: 1280px) {
+  .card {
+    width: calc(33% - 20px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    width:100%;
+  }
+  .productsContainer{
+    width: 95%;
+    margin-top: 20px;
+  }
 }
 

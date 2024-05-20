@@ -13,6 +13,20 @@ const Homepage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [shownProducts, setShownProducts] = useState<Product[]>([]);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 480);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 480);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
 
     // Group products by category for the filters using category id
@@ -77,11 +91,26 @@ const Homepage: React.FC = () => {
         </form>
       </div>
       <div id='mainDisplay'>
-        <Filters
+        {isMobile ? (
+          <>
+            <button className='filterBtn' onClick={() => setFiltersOpen(!filtersOpen)}>
+              Filtros
+            </button>
+            {filtersOpen && (
+              <Filters
+              categories={categories.map(({ category, products }) => ({ category, products }))}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+            )}
+          </>
+        ) : (
+          <Filters
           categories={categories.map(({ category, products }) => ({ category, products }))}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
         />
+        )}
         <Products products={shownProducts} />
       </div>
     </div>

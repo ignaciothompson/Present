@@ -30,7 +30,7 @@
     border: 2px solid grey;
     border-radius: 10px;
     background: none;
-    cursor:grab;
+    cursor:pointer;
 }
 
 #mainDisplay{
@@ -44,5 +44,37 @@
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+}
+
+@media (max-width: 480px) {
+    .bannerContainer{
+        img{
+            width: 100%;
+        }
+    }
+    #searchForm{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #searchBar{
+        font-size: 20px;
+    }
+
+    .filterBtn{
+        width: 95%;
+        margin: auto;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #mainDisplay{
+        flex-wrap: wrap;
+        margin-top: 0px;
+    }
 }
 

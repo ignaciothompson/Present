@@ -197,7 +197,7 @@ const CartPage: React.FC = () => {
                     alt={item.product.name} 
                     // src={product.photoPath ?? "/images/default.jpg"} uncomment when the api is ready
                     className={styles.cartImage}
-                   />
+                  />
                 </div>
                 <div className={styles.textContainer}>
                   <h3 className={styles.itemName}>{item.product.name}</h3>
@@ -275,18 +275,18 @@ const CartPage: React.FC = () => {
             <div>
               <input type="text" id="name" placeholder="Nombre y Apellido"/>
               <input type="text" id="phone" placeholder="Telefono" />
-              <input type="email" id="email" placeholder="Correo electronico" />
+              <input type="email" id="email" placeholder="Correo electronico" className={styles.email}/>
             </div>
             <label>Direccion</label>
             <div>
-              <input type="text" id="street" placeholder="Direccion" />
+              <input type="text" id="street" placeholder="Direccion" className={styles.direction}/>
               <input type="text" id="apartmentNumber" placeholder="Apto/Casa" className={styles.aptNumber} />
               <input type="text" id="corner" placeholder="Esquina" className={styles.corner} />
             </div>
             <div>
               <input type="text-area" id="annotation" className={styles.annotation} />
             </div>
-            <button type="submit" className={styles.submitButton}>Guardar</button>
+            <button type="submit" className={`${styles.submitButton} ${styles.address}`}>Guardar</button>
           </form>
         ) : (
           <div 

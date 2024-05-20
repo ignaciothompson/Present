@@ -188,6 +188,11 @@
     font-size: 15px;
     font-weight: 500;
     border: 1px solid var(--secondary-color);
+    width: 90%;
+    margin: 0px 5px 15px 10px;
+}
+
+.submitButton.address{
     width: 300px;
     margin: 0px auto 15px auto;
 }
@@ -244,3 +249,59 @@
 .paymentText{
     font-size: 14px;
 }
+
+@media screen and (max-width: 480px) {
+    .cartContainer{
+        width: 90%;
+    }
+    .cartItems{
+        width: 95%;
+        margin: 0;
+    }
+    .cartItem{
+        width: 100%;
+    }
+    .cartImage{
+        width: 70px;
+        height: 70px;
+    }
+    .textContainer{
+        width: 60%;
+    }
+    .itemInfo{
+        input{
+            margin-right: 5px;
+        }
+    
+        p{
+            margin-right: 5px;
+            font-size: 16px;
+        }
+    }
+    .cartTotal{
+        width: 100%;
+    }
+
+    .personalInfoForm{
+        width: 100%;
+
+        input{
+            width: 40%;
+        }
+
+        .email{
+            width: 80%;
+        }
+        .direction{
+            width: 80%;
+        }
+        .aptNumber{
+            width: 30%;
+        }
+        .corner{
+            width: 30%;
+        }
+    }
+
+}
+
