@@ -9,15 +9,20 @@
 
 .card {
   position: relative; /* Set position relative for positioning children absolutely within it */
-  width: calc(25% - 15px);
+  width: calc(25% - 20px);
   display: flex;
   flex-direction: column; /* Ensures content is organized vertically */
   align-items: center; /* Aligns children (like buttons and images) in the center */
+  border: 2px solid transparent;
   border-radius: 5px;
   margin-left: 15px;
   margin-bottom: 20px;
   cursor: default;
   overflow: hidden; /* Ensures no overflow content is visible outside the borders */
+}
+
+.card:hover{
+  border: 2px solid var(--secondary-color);
 }
 
 a{

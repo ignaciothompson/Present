@@ -1,5 +1,6 @@
 @import '../../index.css';
 
+
 /* Main container for the cart page */
 .cartContainer{
     width: 70%;
@@ -20,6 +21,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: start;
+    /* background-color: blue; */
 }
 
 /* Styling for the total cost section */

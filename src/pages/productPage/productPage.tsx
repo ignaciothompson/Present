@@ -54,7 +54,11 @@ const ProductPage: React.FC = () => {
   };
 
   return (
+    <>
     <div className={styles.productContainer}>
+      <div className={styles.goBack}>
+        <button className={styles.goBackBtn} onClick={() => window.history.back()}>Atras</button>
+      </div>
     {product ? (
       <>
         <div className={styles.imageContainer}>
@@ -102,6 +106,7 @@ const ProductPage: React.FC = () => {
       <p>Loading...</p>
     )}
   </div>
+  </>
   );
 };
 

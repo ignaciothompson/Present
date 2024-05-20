@@ -24,11 +24,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-      <div className={styles.contact}>
-        <p className={styles.contactInfo}>Si quiere contactarnos directamente<br/> mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp</a></p>
-      </div>
+        {/* <p className={styles.contactInfo}>Si quiere contactarnos directamente mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp</a></p> */}
       <div className={styles.socialMedia}>
-        <p>Tambien pueden encontrarnos en nuestras redes sociales</p>
+        <p>Si quiere contactarnos directamente mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp, </a></p>
+        <p>tambien pueden encontrarnos en nuestras redes sociales</p>
         <div className={styles.socialMediaIcons}>
         <a href="https://www.instagram.com/present.uy/" target="_blank" rel="noopener noreferrer">
           <img src='/images/instagram.svg' alt="Instagram" />

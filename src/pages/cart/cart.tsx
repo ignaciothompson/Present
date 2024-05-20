@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+
 import { CartItem, Order } from "../../types";
 import styles from "./cart.module.css";
 
@@ -180,6 +181,9 @@ const CartPage: React.FC = () => {
 
   return (
     <div className={styles.cartContainer}>
+      <div className={styles.goBack}>
+        <button className={styles.goBackBtn} onClick={() => window.history.back()}>Atras</button>
+      </div>
       <div className={styles.cartItems}>
         {cartItems.length === 0 ? (
           <p>Tu carrito esta vacio</p>
@@ -241,7 +245,7 @@ const CartPage: React.FC = () => {
         <div className={styles.paymentMethodSection}>
           <label className={styles.paymentMethodLabel}>Forma de pago</label>
           <div className={styles.paymentOption}>
-            <input type="checkbox" id="cash" value="Efectivo" className={styles.checkbox} onChange={handlePayment}/>
+            <input type="checkbox" id="cash" value="Efectivo"  className={styles.checkbox} onChange={handlePayment}/>
             Efectivo
           </div>
           <div className={styles.paymentOption}>
@@ -269,7 +273,7 @@ const CartPage: React.FC = () => {
           <form onSubmit={handleSaveData} className={styles.personalInfoForm}>
             <label>Datos Personales</label>
             <div>
-              <input type="text" id="name" placeholder="Nombre y Apellido" />
+              <input type="text" id="name" placeholder="Nombre y Apellido"/>
               <input type="text" id="phone" placeholder="Telefono" />
               <input type="email" id="email" placeholder="Correo electronico" />
             </div>

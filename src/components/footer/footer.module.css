@@ -12,7 +12,9 @@
 }
 
 
-.locations, .contact, .socialMedia {
+.locations, .socialMedia {
+    width: 50%;
+    height: 120px;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -58,6 +60,7 @@
 
 .socialMedia p{
     width: 100%;
+    margin:0px;
 }
 
 .socialMedia img {

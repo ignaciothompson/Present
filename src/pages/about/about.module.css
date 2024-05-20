@@ -1,25 +1,58 @@
 .aboutContainer{
     text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
 }
 
 .container{
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .history{
-    width: 40%;
-    margin-left: 50px;
+    width: 45%;
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.history h3{
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.history p{
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .mision{
-    width: 40%;
-    margin-right: 50px;
+    width: 45%;
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.mision h3{
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.mision p{
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .clientsInfo{
-    width: 60%;
+    width: 100%;
     margin-top: 50px;
 }
 
@@ -28,11 +61,15 @@
 }
 
 .clientsNum{
+    font-family: 'Quicksand-Bold';
     font-size: 32px;
-    font-weight: 700;
+    /* font-weight: 700; */
+    color: #0073e6;
 }
 
-.socialImg{
-    width: 50px;
-    margin-right:25px ;
+@media (max-width: 768px) {
+    .history, .mission {
+        width: 100%;
+    }
 }
+
