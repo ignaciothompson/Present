@@ -34,4 +34,10 @@ li:hover{
     color: lightgray;
 }
 
+@media (max-width: 480px){
+    .categoriesContainer{
+        width: 100%;
+    }
+}
+
 

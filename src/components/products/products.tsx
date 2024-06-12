@@ -23,6 +23,12 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  React.useEffect(() => {
+    if (products.length <= productsPerPage){
+      setCurrentPage(0);
+    }
+  }, [products, productsPerPage])
+
   const handleAddToCart = (product: Product, quantity: number) => {
     const existingCartItems = localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems") || "[]")
@@ -61,7 +67,17 @@ const Products: React.FC<ProductsProps> = ({ products }) => {
   );
 
   const handlePageClick = (data: { selected: number }) => {
-    setCurrentPage(data.selected);
+    const selectedPage = data.selected;
+    const maxPage = Math.ceil(products.length / productsPerPage) - 1;
+  
+    if (selectedPage <= maxPage) {
+      setCurrentPage(selectedPage);
+    }
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (

@@ -6,26 +6,33 @@ interface Category {
   category: string;
   products: Product[];
 }
-
 interface FiltersProps {
   categories: Category[];
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
+  setFiltersOpen: (open: boolean) => void;
 }
 
 const Filters: React.FC<FiltersProps> = ({
   categories,
   selectedCategory,
   setSelectedCategory,
+  setFiltersOpen,
 }) => {
+  const handlePhoneClose = () => {
+    
+  }
   // console.log(categories)
   return (
-    <div className={styles.categoriesContainer}>
+    <div className={styles.categoriesContainer} >
       <h2 id={styles.categoryTitle}>Categorias</h2>
       <ul>
         <li
           key="all"
-          onClick={() => setSelectedCategory("")}
+          onClick={() => {
+            setSelectedCategory("");
+            setFiltersOpen(false);
+          }}
           style={{
             fontFamily:
               selectedCategory === "" ? "Quicksand-Bold" : "Quicksand",
@@ -36,7 +43,11 @@ const Filters: React.FC<FiltersProps> = ({
         {categories.map((category) => (
           <li
             key={category.category}
-            onClick={() => setSelectedCategory(category.category)}
+            onClick={() => {
+              setSelectedCategory(category.category);
+              handlePhoneClose();
+              setFiltersOpen(false);
+            }}
             style={{
               fontFamily:
                 selectedCategory === category.category

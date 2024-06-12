@@ -28,48 +28,50 @@ const Homepage: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setSelectedCategory(''); // This will set selectedCategory to '' only on the first load
+  }, []); // Empty dependency array ensures this runs only once
 
-    // Group products by category for the filters using category id
-    const categories = apiData.map((item: Category) => ({
-      id: item.id,
-      category: item.name,
-      products: item.products
-    }));
+  // Group products by category for the filters using category id
+  const categories = apiData.map((item: Category) => ({
+    id: item.id,
+    category: item.name,
+    products: item.products
+  }));
 
+  useEffect(() => {
+    const products: Product[] = apiData.flatMap((item: Category) => item.products);
+    setFilteredProducts(products);
+  }, [setFilteredProducts])
 
-    useEffect(() => {
-      const products: Product[] = apiData.flatMap((item: Category) => item.products); // Added type annotation for item
-      setFilteredProducts(products);
-    }, [ setFilteredProducts])
-
-
-    useEffect(() => {
-      if (selectedCategory !== '') {
-        const categoryData: Category | undefined = apiData.find((item: Category) => item.name === selectedCategory ); // Added type annotation for categoryData
-        if (categoryData) {
-          setFilteredProducts(categoryData.products);
-        } else {
-          setFilteredProducts([]);
-        }
+  useEffect(() => {
+    if (selectedCategory !== '') {
+      const categoryData: Category | undefined = apiData.find((item: Category) => item.name === selectedCategory);
+      if (categoryData) {
+        setFilteredProducts(categoryData.products);
       } else {
-        const products: Product[] = apiData.flatMap((item: Category) => item.products); // Added type annotation for item
-        setFilteredProducts(products);
+        setFilteredProducts([]);
       }
-    }, [selectedCategory,  setFilteredProducts]) 
+    } else {
+      const products: Product[] = apiData.flatMap((item: Category) => item.products);
+      setFilteredProducts(products);
+    }
+  }, [selectedCategory, setFilteredProducts])
 
-    useEffect(() => {
-      const results = filteredProducts.filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
-      setSearchResults(results);
-    }, [searchTerm, filteredProducts]);
+  useEffect(() => {
+    const results = filteredProducts.filter((product) => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    setSearchResults(results);
+  }, [searchTerm, filteredProducts]);
 
-    useEffect(() => {
-      if(searchResults.length > 0){
-        setShownProducts(searchResults);
-      }else{
-        setShownProducts(filteredProducts);
-      }
-    }, [searchResults, filteredProducts]);
+  useEffect(() => {
+    if (searchResults.length > 0) {
+      setShownProducts(searchResults);
+    } else {
+      setShownProducts(filteredProducts);
+    }
+  }, [searchResults, filteredProducts]);
     
+  console.log(selectedCategory)
   return (
     <div>
       <div className='bannerContainer'>
@@ -98,6 +100,7 @@ const Homepage: React.FC = () => {
             </button>
             {filtersOpen && (
               <Filters
+              setFiltersOpen={setFiltersOpen}
               categories={categories.map(({ category, products }) => ({ category, products }))}
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
@@ -109,6 +112,7 @@ const Homepage: React.FC = () => {
           categories={categories.map(({ category, products }) => ({ category, products }))}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          setFiltersOpen={setFiltersOpen}
         />
         )}
         <Products products={shownProducts} />
