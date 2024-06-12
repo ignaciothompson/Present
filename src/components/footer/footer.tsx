@@ -1,6 +1,22 @@
 import styles from './footer.module.css';
+import { useState, useEffect } from 'react';
 
 const Footer = () => {
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 480);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 480);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <footer className={styles.footer}>
         <div className={styles.locations}>
@@ -26,8 +42,15 @@ const Footer = () => {
         </div>
         {/* <p className={styles.contactInfo}>Si quiere contactarnos directamente mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp</a></p> */}
       <div className={styles.socialMedia}>
-        <p>Si quiere contactarnos directamente mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp, </a></p>
-        <p>tambien pueden encontrarnos en nuestras redes sociales</p>
+        {!isMobile ? (
+          <>
+          <p>Si quiere contactarnos directamente mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp, </a></p>
+          <p>tambien pueden encontrarnos en nuestras redes sociales</p>
+          </>
+        ) : (
+          <p>Si quiere contactarnos directamente mandanos un mensaje a <a href="https://wa.me/59898384646" target="_blank" rel="noopener noreferrer" className={styles.wpLink}>Whatsapp, </a> tambien pueden encontrarnos en nuestras redes sociales</p>
+        )}
+        
         <div className={styles.socialMediaIcons}>
         <a href="https://www.instagram.com/present.uy/" target="_blank" rel="noopener noreferrer">
           <img src='/images/instagram.svg' alt="Instagram" />

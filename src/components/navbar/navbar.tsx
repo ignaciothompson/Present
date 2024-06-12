@@ -19,6 +19,18 @@ const Navbar = () => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   const closeMenu = () => setMenuOpen(false);
+
+  //   if (menuOpen) {
+  //     window.addEventListener('click', closeMenu);
+  //   }
+
+  //   return () => {
+  //     window.removeEventListener('click', closeMenu);
+  //   };
+  // }, [menuOpen]);
+
   return (
     <div className={styles.navContainer}>
       <div className={styles.imgContainer}>
@@ -32,13 +44,13 @@ const Navbar = () => {
             </button>
             {menuOpen && (
               <div className={styles.smallBtnGroup}>
-                <Link to="/" className={styles.navBtn}>
+                <Link to="/" className={styles.navBtn} onClick={() => setMenuOpen(!menuOpen)}>
                   Tienda
                 </Link>
-                <Link to="/sobre-nosotros" className={styles.navBtn}>
+                <Link to="/sobre-nosotros" className={styles.navBtn} onClick={() => setMenuOpen(!menuOpen)}>
                   Sobre Nosotros
                 </Link>
-                <Link to="/carrito" className={styles.navBtn}>
+                <Link to="/carrito" className={styles.navBtn} onClick={() => setMenuOpen(!menuOpen)}>
                   Carrito
                 </Link>
               </div>
